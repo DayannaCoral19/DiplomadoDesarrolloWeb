@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
+    <title>Comercial Daycor - Librería y Papelería</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.sheetjs.com/xlsx-0.20.2/package/dist/xlsx.full.min.js"></script>
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo-container">
+                <img src="img/Logo_Sin_fondo.png" alt="Logo Daycor" class="logo" onerror="this.src='https://placehold.co/40x40/1a237e/white?text=DC'">
+                <div class="logo-text">
+                    <h1 class="empresa-nombre">Comercial Daycor</h1>
+                    <span class="empresa-slogan">Tu mejor opción en librería y papelería</span>
+                </div>
+            </div>
+            <div class="user-actions">
+                <div id="userInfo" class="user-info"></div>
+                <button id="cartBtn" class="btn-cart" style="display: none;"><i class="fas fa-shopping-cart"></i><span class="cart-count" id="cartCount">0</span></button>
+                <button id="loginBtn" class="btn-login"><i class="fas fa-user"></i> <span>Acceso</span></button>
+                <button id="logoutBtn" class="btn-logout" style="display: none;"><i class="fas fa-sign-out-alt"></i> <span>Salir</span></button>
+            </div>
+        </div>
+    </header>
+
+    <nav class="main-nav">
+        <div class="nav-container">
+            <ul class="nav-menu" id="navMenu">
+                <li class="nav-item active" data-modulo="inicio"><a href="#inicio"><i class="fas fa-home"></i><span>Inicio</span></a></li>
+                <li class="nav-item" data-modulo="papeleria"><a href="#papeleria"><i class="fas fa-pencil-ruler"></i><span>Papelería</span></a></li>
+                <li class="nav-item" data-modulo="oficina"><a href="#oficina"><i class="fas fa-building"></i><span>Oficina</span></a></li>
+                <li class="nav-item" data-modulo="libreria"><a href="#libreria"><i class="fas fa-book"></i><span>Librería</span></a></li>
+                <li class="nav-item" data-modulo="detalles"><a href="#detalles"><i class="fas fa-gift"></i><span>Detalles</span></a></li>
+                <li class="nav-item" data-modulo="contacto"><a href="#contacto"><i class="fas fa-envelope"></i><span>Contacto</span></a></li>
+                <li class="nav-item admin-only-item" data-modulo="admin" id="adminNavItem" style="display: none;"><a href="#admin"><i class="fas fa-cog"></i><span>Administración</span></a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="main-content" id="mainContent">
+        <!-- Página de Inicio -->
+        <div id="inicio" class="page active">
+            <section class="carousel-section">
+                <div class="carousel-container">
+                    <div class="carousel-slides">
+                        <div class="carousel-slide"><img src="img/promociones/promocion_1.jpg" alt="Ofertas de Temporada" onerror="this.src='https://placehold.co/1200x350/1a237e/white?text=Ofertas+de+Temporada'"></div>
+                        <div class="carousel-slide"><img src="img/promociones/promocion_2.jpg" alt="Descuentos en Librería" onerror="this.src='https://placehold.co/1200x350/ff6600/white?text=Descuentos+en+Librería'"></div>
+                        <div class="carousel-slide"><img src="img/promociones/promocion_3.jpg" alt="Ofertas en Papelería" onerror="this.src='https://placehold.co/1200x350/1a237e/white?text=Ofertas+en+Papelería'"></div>
+                    </div>
+                    <button class="carousel-btn prev" id="prevBtn">❮</button>
+                    <button class="carousel-btn next" id="nextBtn">❯</button>
+                </div>
+            </section>
+
+            <section class="modules-cards">
+                <h2 class="section-title">Nuestros Servicios</h2>
+                <div class="cards-grid">
+                    <div class="module-card" data-modulo="papeleria"><div class="module-card-icon"><i class="fas fa-pencil-ruler"></i></div><h3>Papelería</h3><p>Todo lo que necesitas para tu oficina y escuela</p></div>
+                    <div class="module-card" data-modulo="oficina"><div class="module-card-icon"><i class="fas fa-building"></i></div><h3>Oficina</h3><p>Mobiliario y suministros de oficina</p></div>
+                    <div class="module-card" data-modulo="libreria"><div class="module-card-icon"><i class="fas fa-book"></i></div><h3>Librería</h3><p>Los mejores libros y autores</p></div>
+                    <div class="module-card" data-modulo="detalles"><div class="module-card-icon"><i class="fas fa-gift"></i></div><h3>Detalles</h3><p>Regalos y artículos especiales</p></div>
+                </div>
+            </section>
+
+            <section class="brands-section" id="brandsSection">
+                <h2 class="section-title">Nuestras Marcas Distribuidoras</h2>
+                <div class="brands-carousel-container">
+                    <div class="brands-carousel" id="brandsCarousel">
+                        <div class="brand-item"><img src="img/logo_Norma_sin_fondo.png" alt="Norma" onerror="this.src='https://placehold.co/80x50/ffffff/1a237e?text=Norma'"></div>
+                        <div class="brand-item"><img src="img/logo_offiesco_Sin_Fondo.png" alt="Offiesco" onerror="this.src='https://placehold.co/80x50/ffffff/1a237e?text=Offiesco'"></div>
+                        <div class="brand-item"><img src="img/logo_pelikan_Sin_Fondo.png" alt="Pelikan" onerror="this.src='https://placehold.co/80x50/ffffff/1a237e?text=Pelikan'"></div>
+                        <div class="brand-item"><img src="img/Logo_planeta_Sin_Fondo.png" alt="Planeta" onerror="this.src='https://placehold.co/80x50/ffffff/1a237e?text=Planeta'"></div>
+                        <div class="brand-item"><img src="img/logo_primavera_Sin_Fondo.png" alt="Primavera" onerror="this.src='https://placehold.co/80x50/ffffff/1a237e?text=Primavera'"></div>
+                        <div class="brand-item"><img src="img/logo_random_Sin_Fondo.png" alt="Random" onerror="this.src='https://placehold.co/80x50/ffffff/1a237e?text=Random'"></div>
+                        <div class="brand-item"><img src="img/logo_scribe_Sin_Fondo.png" alt="Scribe" onerror="this.src='https://placehold.co/80x50/ffffff/1a237e?text=Scribe'"></div>
+                        <div class="brand-item"><img src="img/logo_urano_sin_fondo.png" alt="Urano" onerror="this.src='https://placehold.co/80x50/ffffff/1a237e?text=Urano'"></div>
+                        <div class="brand-item"><img src="img/Logo_Artesco_Sin_Fondo.png" alt="Artesco" onerror="this.src='https://placehold.co/80x50/ffffff/1a237e?text=Artesco'"></div>
+                        <div class="brand-item"><img src="img/Logo_JeanBook__Sin_Fondo.png" alt="Jean Book" onerror="this.src='https://placehold.co/80x50/ffffff/1a237e?text=Jean+Book'"></div>
+                        <div class="brand-item"><img src="img/Logo_Kiut_Sin_Fondo.png" alt="Kiut" onerror="this.src='https://placehold.co/80x50/ffffff/1a237e?text=Kiut'"></div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Módulos en construcción -->
+        <div id="papeleria" class="page"><div class="construction"><i class="fas fa-hard-hat"></i><h2>Módulo Papelería</h2><p>Pronto tendremos disponible toda nuestra línea de papelería</p><div class="construction-progress"><div class="progress-bar"></div><span>En desarrollo... 60%</span></div></div></div>
+        <div id="oficina" class="page"><div class="construction"><i class="fas fa-hard-hat"></i><h2>Módulo Oficina</h2><p>Estamos preparando el mejor mobiliario para tu oficina</p><div class="construction-progress"><div class="progress-bar"></div><span>En desarrollo... 40%</span></div></div></div>
+        <div id="detalles" class="page"><div class="construction"><i class="fas fa-hard-hat"></i><h2>Módulo Detalles</h2><p>Pronto encontrarás los mejores detalles y regalos</p><div class="construction-progress"><div class="progress-bar"></div><span>En desarrollo... 30%</span></div></div></div>
+
+        <!-- Módulo Librería -->
+        <div id="libreria" class="page">
+            <div class="library-layout">
+                <aside class="library-filters">
+                    <div class="filter-section"><h3><i class="fas fa-search"></i> Búsqueda</h3><input type="text" id="searchBooksInput" placeholder="Buscar libros..."></div>
+                    <div class="filter-section"><h3><i class="fas fa-tag"></i> Categorías</h3><div class="filter-options"><label><input type="checkbox" class="category-filter" value="Romance"> Romance</label><label><input type="checkbox" class="category-filter" value="Acción"> Acción</label><label><input type="checkbox" class="category-filter" value="Suspenso"> Suspenso</label><label><input type="checkbox" class="category-filter" value="Superación"> Superación</label><label><input type="checkbox" class="category-filter" value="Ciencia Ficción"> Ciencia Ficción</label><label><input type="checkbox" class="category-filter" value="Aventura"> Aventura</label></div></div>
+                    <div class="filter-section"><h3><i class="fas fa-building"></i> Editoriales</h3><div class="filter-options" id="publisherFilters"></div></div>
+                    <div class="filter-section"><h3><i class="fas fa-user"></i> Autores</h3><div class="filter-options" id="authorFilters"></div></div>
+                    <div class="filter-section"><h3><i class="fas fa-dollar-sign"></i> Rango de Precios</h3><div class="price-range"><input type="range" id="priceMin" min="0" max="200000" step="5000" value="0"><input type="range" id="priceMax" min="0" max="200000" step="5000" value="200000"><div class="price-values"><span>$<span id="minPriceVal">0</span></span><span>$<span id="maxPriceVal">200,000</span></span></div></div></div>
+                    <div class="filter-section"><h3><i class="fas fa-fire"></i> Promociones</h3><label><input type="checkbox" id="promoOnly"> Solo en promoción</label></div>
+                    <button id="clearFilters" class="btn-clear-filters"><i class="fas fa-eraser"></i> Limpiar filtros</button>
+                </aside>
+
+                <div class="library-main">
+                    <div class="library-header"><h2><i class="fas fa-book-open"></i> Librería Daycor</h2><div class="library-actions"><select id="sortBy" class="sort-select"><option value="default">Ordenar por</option><option value="price_asc">Precio: menor a mayor</option><option value="price_desc">Precio: mayor a menor</option><option value="title_asc">Título: A-Z</option><option value="title_desc">Título: Z-A</option></select><div class="view-toggle"><button class="view-btn active" data-view="grid"><i class="fas fa-th"></i></button><button class="view-btn" data-view="list"><i class="fas fa-list"></i></button></div></div></div>
+                    <div class="books-grid-view" id="libreriaProductsGrid"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Módulo Contacto -->
+        <div id="contacto" class="page">
+            <div class="contact-container">
+                <div class="contact-info">
+                    <h2><i class="fas fa-map-marker-alt"></i> Nuestras Sedes</h2>
+                    <div class="sede"><h3><i class="fas fa-star"></i> Sede Principal</h3><p><i class="fas fa-location-dot"></i> Calle 13 #7-54, Ipiales - Nariño</p><p><i class="fas fa-clock"></i> Lunes a Sábado 8:00 AM - 7:00 PM</p></div>
+                    <div class="sede"><h3><i class="fas fa-store"></i> Sucursal</h3><p><i class="fas fa-location-dot"></i> Carrera 6 #14-82, Ipiales - Nariño</p><p><i class="fas fa-clock"></i> Lunes a Sábado 9:00 AM - 6:00 PM</p></div>
+                    <div class="contact-details"><h3><i class="fas fa-phone"></i> Contacto</h3><p><i class="fab fa-whatsapp"></i> WhatsApp: 3106571039</p><p><i class="fas fa-envelope"></i> Correo: dayannacor@hotmail.com</p></div>
+                    <div class="social-links"><h3>Redes Sociales</h3><div class="social-icons"><a href="#"><i class="fab fa-instagram"></i></a><a href="#"><i class="fab fa-facebook"></i></a><a href="#"><i class="fab fa-tiktok"></i></a></div></div>
+                </div>
+                <div class="contact-form">
+                    <h2><i class="fas fa-comment-alt"></i> PQRS</h2>
+                    <form id="pqrsForm">
+                        <input type="text" id="contactName" placeholder="Nombre Completo" required>
+                        <input type="email" id="contactEmail" placeholder="Correo Electrónico" required>
+                        <input type="tel" id="contactPhone" placeholder="Teléfono" required>
+                        <select id="requestType" required><option value="">Tipo de Solicitud</option><option value="Petición">📝 Petición</option><option value="Queja">⚠️ Queja</option><option value="Reclamo">📢 Reclamo</option><option value="Sugerencia">💡 Sugerencia</option></select>
+                        <input type="text" id="contactSubject" placeholder="Asunto" required>
+                        <textarea id="contactMessage" placeholder="Descripción" rows="5" required></textarea>
+                        <button type="submit" class="btn-submit"><i class="fas fa-paper-plane"></i> Enviar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- Página de Administración -->
+        <div id="admin" class="page">
+            <div class="admin-layout">
+                <aside class="admin-vertical-menu">
+                    <div class="admin-menu-header"><i class="fas fa-user-shield"></i><h3>Panel de Control</h3><p>Bienvenido, <span id="adminName"></span></p></div>
+                    <nav class="admin-vertical-nav">
+                        <a href="#" class="admin-vertical-link active" data-admin-section="products"><i class="fas fa-boxes"></i><div class="admin-link-info"><span class="admin-link-title">Gestión de Productos</span><span class="admin-link-desc">Administrar inventario</span></div></a>
+                        <a href="#" class="admin-vertical-link" data-admin-section="users"><i class="fas fa-users"></i><div class="admin-link-info"><span class="admin-link-title">Gestión de Usuarios</span><span class="admin-link-desc">Administrar cuentas</span></div></a>
+                        <a href="#" class="admin-vertical-link" data-admin-section="menus"><i class="fas fa-bars"></i><div class="admin-link-info"><span class="admin-link-title">Gestión de Menús</span><span class="admin-link-desc">Activar/Inactivar módulos</span></div></a>
+                        <a href="#" class="admin-vertical-link" data-admin-section="coupons"><i class="fas fa-ticket-alt"></i><div class="admin-link-info"><span class="admin-link-title">Gestión de Cupones</span><span class="admin-link-desc">Crear códigos de descuento</span></div></a>
+                        <a href="#" class="admin-vertical-link" data-admin-section="images"><i class="fas fa-images"></i><div class="admin-link-info"><span class="admin-link-title">Gestión de Imágenes</span><span class="admin-link-desc">Administrar banners</span></div></a>
+                    </nav>
+                    <div class="admin-menu-footer"><button id="adminLogoutBtn" class="btn-admin-logout"><i class="fas fa-sign-out-alt"></i> Cerrar Sesión Admin</button></div>
+                </aside>
+
+                <div class="admin-content">
+                    <!-- Gestión de Productos -->
+                    <div id="adminProductsSection" class="admin-section active">
+                        <div class="admin-container">
+                            <h2><i class="fas fa-boxes"></i> Gestión de Productos</h2>
+                            <div class="admin-tabs"><button class="admin-tab active" data-module-tab="papeleria">Papelería</button><button class="admin-tab" data-module-tab="oficina">Oficina</button><button class="admin-tab" data-module-tab="libreria">Librería</button><button class="admin-tab" data-module-tab="detalles">Detalles</button></div>
+                            
+                            <div class="bulk-upload-section"><h3><i class="fas fa-file-excel"></i> Carga Masiva</h3><div class="bulk-upload-info"><button id="downloadTemplateBtn" class="btn-template"><i class="fas fa-download"></i> Plantilla</button><button id="downloadCurrentDataBtn" class="btn-template btn-current"><i class="fas fa-database"></i> Exportar Datos</button><button id="uploadExcelBtn" class="btn-upload"><i class="fas fa-upload"></i> Cargar Excel</button><input type="file" id="excelUpload" accept=".xlsx, .xls, .csv" style="display: none;"><button id="updateFromExcelBtn" class="btn-update"><i class="fas fa-sync-alt"></i> Actualizar</button><span id="selectedModule" class="selected-module">Papelería</span></div></div>
+                            
+                            <div class="product-form">
+                                <h3><i class="fas fa-plus-circle"></i> Agregar Producto</h3>
+                                <div class="form-row-group"><div class="form-group"><label>Código:</label><input type="text" id="productCode" placeholder="Ej: PAP-001"></div><div class="form-group"><label>Referencia:</label><input type="text" id="productReference" placeholder="Ej: REF-001"></div></div>
+                                <div class="form-group"><label>Descripción:</label><input type="text" id="productDescription" placeholder="Nombre del producto"></div>
+                                <div class="form-row-group"><div class="form-group"><label>Precio Unitario:</label><input type="number" id="productPriceUnit" placeholder="0"></div><div class="form-group"><label>Precio x6:</label><input type="number" id="productPricePack" placeholder="0"></div></div>
+                                <div class="form-group"><label>URL Imagen:</label><input type="text" id="productImageUrl" placeholder="https://placehold.co/300x200/1a237e/white?text=Producto"></div>
+                                <div class="form-group" id="bookSummaryField" style="display:none"><label><i class="fas fa-align-left"></i> Resumen del libro:</label><textarea id="productSummary" rows="3" placeholder="Escriba un resumen del libro..." style="width:100%;padding:0.6rem;border:2px solid #e0e5ec;border-radius:8px"></textarea></div>
+                                <div class="form-row-group"><div class="form-group"><label>Estado:</label><select id="productStatus"><option value="activo">Activo</option><option value="inactivo">Inactivo</option></select></div></div>
+                                <button id="saveProductBtn" class="btn-save"><i class="fas fa-save"></i> Guardar</button>
+                            </div>
+                            
+                            <div class="products-section"><h3>Productos</h3><div class="products-grid" id="productsGrid"></div></div>
+                        </div>
+                    </div>
+
+                    <!-- Gestión de Usuarios -->
+                    <div id="adminUsersSection" class="admin-section"><div class="admin-container"><h2><i class="fas fa-users"></i> Gestión de Usuarios</h2><div class="users-actions"><button id="activateAllUsers" class="btn-action btn-success"><i class="fas fa-check-double"></i> Activar Todos</button><button id="deactivateAllUsers" class="btn-action btn-danger"><i class="fas fa-ban"></i> Inactivar Todos</button></div><div class="users-table-container"><table class="users-table"><thead><tr><th><input type="checkbox" id="selectAllUsers"></th><th>ID</th><th>Nombre</th><th>Correo</th><th>Teléfono</th><th>Rol</th><th>Estado</th><th>Acciones</th></tr></thead><tbody id="usersTableBody"></tbody></table></div></div></div>
+
+                    <!-- Gestión de Menús -->
+                    <div id="adminMenusSection" class="admin-section"><div class="admin-container"><h2><i class="fas fa-bars"></i> Gestión de Menús</h2><div class="menus-grid" id="menusGrid"><div class="menu-item" data-menu="papeleria"><div class="menu-icon"><i class="fas fa-pencil-ruler"></i></div><div class="menu-info"><h3>Papelería</h3><p>Módulo de productos de papelería</p></div><label class="switch"><input type="checkbox" class="menu-toggle" data-menu="papeleria"><span class="slider round"></span></label></div><div class="menu-item" data-menu="oficina"><div class="menu-icon"><i class="fas fa-building"></i></div><div class="menu-info"><h3>Oficina</h3><p>Módulo de productos de oficina</p></div><label class="switch"><input type="checkbox" class="menu-toggle" data-menu="oficina"><span class="slider round"></span></label></div><div class="menu-item" data-menu="libreria"><div class="menu-icon"><i class="fas fa-book"></i></div><div class="menu-info"><h3>Librería</h3><p>Módulo de libros y publicaciones</p></div><label class="switch"><input type="checkbox" class="menu-toggle" data-menu="libreria"><span class="slider round"></span></label></div><div class="menu-item" data-menu="detalles"><div class="menu-icon"><i class="fas fa-gift"></i></div><div class="menu-info"><h3>Detalles</h3><p>Módulo de regalos y detalles</p></div><label class="switch"><input type="checkbox" class="menu-toggle" data-menu="detalles"><span class="slider round"></span></label></div><div class="menu-item" data-menu="contacto"><div class="menu-icon"><i class="fas fa-envelope"></i></div><div class="menu-info"><h3>Contacto</h3><p>Módulo de contacto y PQRS</p></div><label class="switch"><input type="checkbox" class="menu-toggle" data-menu="contacto"><span class="slider round"></span></label></div></div></div></div>
+
+                    <!-- Gestión de Cupones -->
+                    <div id="adminCouponsSection" class="admin-section"><div class="admin-container"><h2><i class="fas fa-ticket-alt"></i> Gestión de Cupones</h2><div class="coupon-form"><h3>Crear Nuevo Cupón</h3><div class="form-row"><input type="text" id="couponCode" placeholder="Código del cupón"></div><div class="form-row"><input type="date" id="couponStartDate"></div><div class="form-row"><input type="date" id="couponEndDate"></div><div class="form-row"><input type="number" id="couponDiscount" placeholder="% Descuento"></div><button id="createCouponBtn" class="btn-save"><i class="fas fa-plus"></i> Crear Cupón</button></div><div class="coupons-section"><h3>Cupones Existentes</h3><div class="coupons-grid" id="couponsGrid"></div></div></div></div>
+
+                    <!-- Gestión de Imágenes -->
+                    <div id="adminImagesSection" class="admin-section"><div class="admin-container"><h2><i class="fas fa-images"></i> Gestión de Imágenes</h2><div class="image-form"><h3>Agregar Nueva Imagen</h3><div class="form-row"><input type="text" id="imageModule" placeholder="Módulo"></div><div class="form-row"><input type="text" id="imageName" placeholder="Nombre"></div><div class="form-row"><input type="text" id="imageUrl" placeholder="URL"></div><div class="form-row"><input type="text" id="imageFunction" placeholder="Funcionalidad"></div><button id="addImageBtn" class="btn-save"><i class="fas fa-plus"></i> Agregar</button></div><div class="images-section"><h3>Imágenes del Sistema</h3><div class="images-grid" id="imagesGrid"></div></div></div></div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-info"><div class="footer-logo-text"><i class="fas fa-book-open"></i><h3>Comercial Daycor</h3></div><p>Tu mejor opción en librería y papelería en Ipiales</p></div>
+            <div class="footer-contact"><h4>Contacto</h4><p><i class="fas fa-map-marker-alt"></i> Calle 13 #7-54, Ipiales - Nariño</p><p><i class="fab fa-whatsapp"></i> 3106571039</p><p><i class="fas fa-envelope"></i> dayannacor@hotmail.com</p></div>
+            <div class="footer-links"><h4>Enlaces rápidos</h4><a href="#inicio">Inicio</a><a href="#libreria">Librería</a><a href="#contacto">Contacto</a><a href="#">Términos</a></div>
+            <div class="footer-social"><h4>Síguenos</h4><div class="social-icons"><a href="#"><i class="fab fa-instagram"></i></a><a href="#"><i class="fab fa-facebook"></i></a><a href="#"><i class="fab fa-tiktok"></i></a></div></div>
+        </div>
+        <div class="footer-bottom"><p>&copy; 2024 Comercial Daycor - Ipiales, Nariño, Colombia. Todos los derechos reservados.</p></div>
+    </footer>
+
+    <!-- Modales -->
+    <div id="loginModal" class="modal"><div class="modal-content"><span class="close">&times;</span><h2><i class="fas fa-sign-in-alt"></i> Acceso</h2><div id="loginTabs"><button class="tab-btn active" data-tab="login">Login</button><button class="tab-btn" data-tab="register">Registro</button><button class="tab-btn" data-tab="recover">Recuperar</button></div>
+    <div id="loginTab" class="tab-content active"><form id="loginForm"><div class="input-group"><i class="fas fa-envelope"></i><input type="email" id="loginEmail" placeholder="Correo" required></div><div class="input-group"><i class="fas fa-lock"></i><input type="password" id="loginPassword" placeholder="Contraseña" required></div><button type="submit" class="btn-login-submit"><i class="fas fa-arrow-right"></i> Ingresar</button></form><div class="demo-credentials"><small><i class="fas fa-info-circle"></i> Admin: dayannacor@hotmail.com / Admin1234*</small></div></div>
+    <div id="registerTab" class="tab-content"><form id="registerForm"><div class="input-group"><i class="fas fa-user"></i><input type="text" id="regName" placeholder="Nombre" required></div><div class="input-group"><i class="fas fa-envelope"></i><input type="email" id="regEmail" placeholder="Correo" required></div><div class="input-group"><i class="fas fa-phone"></i><input type="tel" id="regPhone" placeholder="Teléfono" required></div><div class="input-group"><i class="fas fa-map-marker-alt"></i><input type="text" id="regAddress" placeholder="Dirección" required></div><div class="input-group"><i class="fas fa-lock"></i><input type="password" id="regPassword" placeholder="Contraseña" required></div><div class="input-group"><i class="fas fa-lock"></i><input type="password" id="regConfirmPassword" placeholder="Confirmar" required></div><label class="checkbox-label"><input type="checkbox" id="termsCheckbox" required><span>Acepto términos y condiciones</span></label><button type="submit" class="btn-register"><i class="fas fa-user-plus"></i> Registrarse</button></form></div>
+    <div id="recoverTab" class="tab-content"><form id="recoverForm"><div class="input-group"><i class="fas fa-envelope"></i><input type="email" id="recoverEmail" placeholder="Correo" required></div><button type="submit" class="btn-recover"><i class="fas fa-paper-plane"></i> Enviar</button></form></div></div></div>
+
+    <!-- Modal del Carrito -->
+    <div id="cartModal" class="modal"><div class="modal-content cart-modal" style="max-width:700px"><span class="close-cart">&times;</span><h2><i class="fas fa-shopping-cart"></i> 🛒 Carrito de Cotización</h2><div style="background:#f5f7fa;padding:1rem;border-radius:12px;margin-bottom:1rem"><div style="display:flex;gap:0.5rem;align-items:center;flex-wrap:wrap"><input type="text" id="couponInput" placeholder="🎫 Ingrese código de cupón" style="flex:1;padding:0.6rem;border:2px solid #e0e5ec;border-radius:8px"><button id="applyCouponBtn" style="background:#1a237e;color:white;border:none;padding:0.6rem 1rem;border-radius:8px;cursor:pointer">✅ Aplicar</button><button id="removeCouponBtn" style="background:#9e9e9e;color:white;border:none;padding:0.6rem 1rem;border-radius:8px;cursor:pointer">❌ Quitar</button></div><div id="couponInfo" style="margin-top:0.5rem;font-size:0.8rem;color:#ff6600"></div></div><div id="cartItems" class="cart-items" style="max-height:350px;overflow-y:auto"></div><div style="padding:1rem;border-top:2px solid #ff6600;margin-top:0.5rem"><div style="display:flex;justify-content:space-between;margin-bottom:0.5rem"><span>📊 Subtotal:</span><span style="font-weight:bold">$<span id="cartTotal">0</span></span></div><div style="display:flex;justify-content:space-between;margin-bottom:0.5rem;color:#4CAF50"><span>🎫 Descuento:</span><span style="font-weight:bold">-$<span id="cartDiscount">0</span></span></div><div style="display:flex;justify-content:space-between;font-size:1.2rem;border-top:1px solid #e0e5ec;padding-top:0.5rem"><span>💰 <strong>TOTAL:</strong></span><span style="font-weight:bold;color:#ff6600">$<span id="cartFinalTotal">0</span></span></div></div><div class="cart-actions" style="display:flex;gap:1rem;justify-content:flex-end;padding:1rem"><button id="clearCartBtn" class="btn-clear-cart" style="background:#f44336;color:white;border:none;padding:0.6rem 1rem;border-radius:8px;cursor:pointer"><i class="fas fa-trash-alt"></i> Vaciar carrito</button><button id="continueShopping" class="btn-continue" style="background:#1a237e;color:white;border:none;padding:0.6rem 1rem;border-radius:8px;cursor:pointer"><i class="fas fa-arrow-left"></i> Seguir comprando</button><button id="sendWhatsApp" class="btn-send" style="background:#25D366;color:white;border:none;padding:0.6rem 1rem;border-radius:8px;cursor:pointer"><i class="fab fa-whatsapp"></i> Enviar por WhatsApp</button></div></div></div>
+
+    <!-- Modal detalle del libro -->
+    <div id="bookDetailModal" class="modal"><div class="modal-content book-detail-modal" style="max-width:700px"><span class="close-book-detail" style="position:absolute;right:1rem;top:1rem;font-size:1.2rem;cursor:pointer">&times;</span><div id="bookDetailContent" class="book-detail-container"></div></div></div>
+
+    <!-- Modal editar producto (Admin) -->
+    <div id="editProductModal" class="modal"><div class="modal-content edit-product-modal" style="max-width:700px"><span class="close-edit-modal" style="position:absolute;right:1rem;top:1rem;font-size:1.2rem;cursor:pointer">&times;</span><h2><i class="fas fa-edit"></i> Editar Producto</h2><form id="editProductForm" class="edit-product-form" style="max-height:70vh;overflow-y:auto;padding-right:0.5rem"><div class="form-row-group"><div class="form-group"><label><i class="fas fa-barcode"></i> Código:</label><input type="text" id="editProductCode" readonly></div><div class="form-group"><label><i class="fas fa-tag"></i> Referencia:</label><input type="text" id="editProductReference"></div></div><div class="form-group"><label><i class="fas fa-heading"></i> Descripción:</label><input type="text" id="editProductDescription"></div><div class="form-row-group"><div class="form-group"><label><i class="fas fa-dollar-sign"></i> Precio Unitario:</label><input type="number" id="editProductPriceUnit" step="1000"></div><div class="form-group"><label><i class="fas fa-boxes"></i> Precio x6:</label><input type="number" id="editProductPricePack" step="1000"></div></div><div class="form-group"><label><i class="fas fa-image"></i> URL Imagen:</label><input type="text" id="editProductImageUrl" placeholder="https://placehold.co/300x200/1a237e/white?text=Producto"></div><div id="editBookFields" style="display:none"><div class="form-row-group"><div class="form-group"><label><i class="fas fa-user"></i> Autor:</label><input type="text" id="editBookAuthor"></div><div class="form-group"><label><i class="fas fa-building"></i> Editorial:</label><select id="editBookPublisher" style="width:100%;padding:0.5rem;border:2px solid #e0e5ec;border-radius:8px"><option value="Planeta">Planeta</option><option value="Random Penguin">Random Penguin</option><option value="Urano">Urano</option><option value="Pan House">Pan House</option><option value="Alfaguara">Alfaguara</option><option value="Salamandra">Salamandra</option></select></div></div><div class="form-group"><label><i class="fas fa-tags"></i> Categorías:</label><div id="editBookCategories" class="categories-checkbox-group"></div></div><div class="form-group"><label><i class="fas fa-fire"></i> Promoción:</label><select id="editBookPromotion"><option value="false">No</option><option value="true">Sí</option></select></div><div class="form-group"><label><i class="fas fa-align-left"></i> Resumen:</label><textarea id="editBookSummary" rows="4" placeholder="Escriba un resumen del libro..." style="width:100%;padding:0.6rem;border:2px solid #e0e5ec;border-radius:8px"></textarea></div></div><div class="form-row-group"><div class="form-group"><label><i class="fas fa-power-off"></i> Estado:</label><select id="editProductStatus"><option value="activo">✅ Activo</option><option value="inactivo">⛔ Inactivo</option></select></div></div><div class="form-actions" style="display:flex;gap:1rem;margin-top:1rem"><button type="submit" class="btn-save"><i class="fas fa-save"></i> Guardar</button><button type="button" class="btn-cancel" id="cancelEditBtn"><i class="fas fa-times"></i> Cancelar</button></div></form></div></div>
+
+    <script src="app.js"></script>
+</body>
+</html>
